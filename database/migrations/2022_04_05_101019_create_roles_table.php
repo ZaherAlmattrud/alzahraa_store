@@ -15,8 +15,10 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 255);
+            $table->boolean('active')->default(0);
             $table->timestamps();
-            $table->unsignedBigInteger('grade_id')->index('flag_terms_grade_id_foreign')->nullable();
+          
         });
     }
 

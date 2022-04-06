@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFksToRolesTable extends Migration
+class CreateSecuersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class AddFksToRolesTable extends Migration
      */
     public function up()
     {
-        Schema::table('roles', function (Blueprint $table) {
-            //
-
-            $table->foreign(['grade_id'])->nullable()->references(['id'])->on('school_class');
+        Schema::create('secuers', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -27,8 +26,6 @@ class AddFksToRolesTable extends Migration
      */
     public function down()
     {
-        Schema::table('roles', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('secuers');
     }
 }

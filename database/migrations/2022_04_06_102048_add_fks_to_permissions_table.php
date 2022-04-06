@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSecuerablesTable extends Migration
+class AddFksToPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateSecuerablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('secuerables', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('permissions', function (Blueprint $table) {
+            //
+
+            $table->foreign(['secuer_id'])->nullable()->references(['id'])->on('secuers');
+
+
         });
     }
 
@@ -26,6 +29,8 @@ class CreateSecuerablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('secuerables');
+        Schema::table('permissions', function (Blueprint $table) {
+            //
+        });
     }
 }

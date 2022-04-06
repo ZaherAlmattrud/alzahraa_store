@@ -15,6 +15,9 @@ class CreateRolesMembersTable extends Migration
     {
         Schema::create('roles_members', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->index('users_id_foreign');
+            $table->unsignedBigInteger('role_id')->index('roles_id_foreign');
+            $table->boolean('active')->default(0);
             $table->timestamps();
         });
     }
